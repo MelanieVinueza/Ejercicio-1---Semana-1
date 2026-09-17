@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  background: #2f6fed;
+  background: #2459d1;
   color: #fff;
   padding: 20px;
 }
@@ -59,6 +59,12 @@ button {
   cursor: pointer;
   padding: 8px 14px;
   border-radius: 6px;
-  border: 1px solid #2f6fed;
+  border: 1px solid #2459d1;
   background: #eaf1ff;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #1c2333;
+  outline-offset: 2px;
 }

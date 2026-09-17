@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: Validate static site
@@ -17,12 +21,33 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      - name: Run tests
+          cache: pip
+
+      - name: Install Python test dependencies
+        run: python -m pip install html5validator
+
+      - name: Validate HTML5 (W3C / Nu validator)
+        run: html5validator index.html
+
+      - name: Run semantic HTML, ARIA and link safety tests
         run: python -m unittest discover -s tests -p "validate_site.py" -v
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Accessibility (WCAG 2.1 AA) and responsive checks
+        run: node tests/check_a11y_responsive.js
 
   deploy:
     name: Deploy to GitHub Pages
@@ -39,14 +64,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
-      - name: Deploy
+
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

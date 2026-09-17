@@ -1,0 +1,13 @@
+{
+  "name": "ejercicio1-ci-cd",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Checks de accesibilidad (WCAG 2.1 AA) y responsive para el sitio estático",
+  "scripts": {
+    "test:a11y": "node tests/check_a11y_responsive.js"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.0",
+    "playwright-core": "^1.47.0"
+  }
+}
