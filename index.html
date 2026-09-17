@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi tarjeta de presentación</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Melanie Vinueza</h1>
+    <nav>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <img src="foto.jpg" alt="Retrato de Melanie Vinueza sonriendo frente a una laptop" width="120" height="120">
+      <p>Soy estudiante de Desarrollo en Plataformas. Me interesa crear páginas web accesibles y bien estructuradas.</p>
+    </section>
+
+    <section id="habilidades">
+      <h2>Mis habilidades</h2>
+      <button id="toggleHabilidades" type="button">Mostrar/ocultar habilidades</button>
+      <ul id="listaHabilidades">
+        <li>HTML5 semántico</li>
+        <li>CSS3 básico</li>
+        <li>JavaScript básico</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <p>Contacto: melanie.vinueza@correo.com</p>
+    <p>&copy; <span id="anio"></span> Melanie Vinueza</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
