@@ -25,7 +25,7 @@ Incluye:
 ### 2. Validación HTML5 con el validador W3C/Nu
 
 ```powershell
-pip install html5validator
+pip install -r requirements.txt
 html5validator index.html
 ```
 
